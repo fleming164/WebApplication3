@@ -10,9 +10,24 @@ namespace WebApplication3.Controllers
 {
     public class HomeController : Controller
     {
+
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View("IndexWithForm");
+        }
+        [HttpPost]
+        public IActionResult Index(Contact contact)
+        {
+
+            if (ModelState.IsValid)
+            {
+                return View(contact);
+            }
+            else
+            {
+                return View("IndexWithForm");
+            }
         }
 
         public IActionResult About()
